@@ -1,0 +1,122 @@
+[
+    {
+        "course_id": 1,
+        "course_name": "PHP Web Development",
+        "course_image": "https://i.ibb.co/X8MX2P2/card1.jpg",
+        "modules": [
+            {"module_id": 1, "module_name": "Introduction to PHP","module_bg":"bg-green-400"},
+            {"module_id": 2, "module_name": "Database Connectivity with PHP","module_bg":"bg-green-400"},
+            {"module_id": 3, "module_name": "Building Dynamic Web Pages1","module_bg":"bg-blue-400"},
+            {"module_id": 4, "module_name": "Building Dynamic Web Pages2","module_bg":"bg-orange-400"},
+            {"module_id": 5, "module_name": "Building Dynamic Web Pages3","module_bg":"bg-blue-400"},
+            {"module_id": 6, "module_name": "Building Dynamic Web Pages4","module_bg":"bg-green-400"},
+            {"module_id": 7, "module_name": "Building Dynamic Web Pages5","module_bg":"bg-pink-400"}
+        ],
+        "price":"6600"
+    },
+    {
+        "course_id": 2,
+        "course_name": "PHP Web Development",
+        "course_image": "https://i.ibb.co/3MXWhN8/card2.jpg",
+        "modules": [
+            {"module_id": 1, "module_name": "Introduction to PHP","module_bg":"bg-pink-400"},
+            {"module_id": 2, "module_name": "Database Connectivity with PHP","module_bg":"bg-green-400"},
+            {"module_id": 3, "module_name": "Building Dynamic Web Pages1","module_bg":"bg-blue-400"},
+            {"module_id": 4, "module_name": "Building Dynamic Web Pages2","module_bg":"bg-orange-400"},
+            {"module_id": 5, "module_name": "Building Dynamic Web Pages3","module_bg":"bg-blue-400"},
+            {"module_id": 6, "module_name": "Building Dynamic Web Pages4","module_bg":"bg-green-400"},
+            {"module_id": 7, "module_name": "Building Dynamic Web Pages5","module_bg":"bg-pink-400"}
+        ],
+        "price":"6600"
+    },
+    {
+        "course_id": 3,
+        "course_name": "PHP Web Development",
+        "course_image": "https://i.ibb.co/KN7wpY7/card4.jpg",
+        "modules": [
+            {"module_id": 1, "module_name": "Introduction to PHP","module_bg":"bg-pink-400"},
+            {"module_id": 2, "module_name": "Database Connectivity with PHP","module_bg":"bg-green-400"},
+            {"module_id": 3, "module_name": "Building Dynamic Web Pages1","module_bg":"bg-blue-400"},
+            {"module_id": 4, "module_name": "Building Dynamic Web Pages2","module_bg":"bg-orange-400"},
+            {"module_id": 5, "module_name": "Building Dynamic Web Pages3","module_bg":"bg-blue-400"},
+            {"module_id": 6, "module_name": "Building Dynamic Web Pages4","module_bg":"bg-green-400"},
+            {"module_id": 7, "module_name": "Building Dynamic Web Pages5","module_bg":"bg-pink-400"}
+        ],
+        "price":"6600"
+    },
+    {
+        "course_id": 4,
+        "course_name": "PHP Web Development",
+        "course_image": "https://i.ibb.co/3MXWhN8/card2.jpg",
+        "modules": [
+            {"module_id": 1, "module_name": "Introduction to PHP","module_bg":"bg-pink-400"},
+            {"module_id": 2, "module_name": "Database Connectivity with PHP","module_bg":"bg-green-400"},
+            {"module_id": 3, "module_name": "Building Dynamic Web Pages1","module_bg":"bg-blue-400"},
+            {"module_id": 4, "module_name": "Building Dynamic Web Pages2","module_bg":"bg-orange-400"},
+            {"module_id": 5, "module_name": "Building Dynamic Web Pages3","module_bg":"bg-blue-400"},
+            {"module_id": 6, "module_name": "Building Dynamic Web Pages4","module_bg":"bg-green-400"},
+            {"module_id": 7, "module_name": "Building Dynamic Web Pages5","module_bg":"bg-pink-400"}
+        ]
+        ,"price":"6600"
+    },
+    {
+        "course_id": 5,
+        "course_name": "PHP Web Development",
+        "course_image": "https://i.ibb.co/3MXWhN8/card2.jpg",
+        "modules": [
+            {"module_id": 1, "module_name": "Introduction to PHP","module_bg":"bg-pink-400"},
+            {"module_id": 2, "module_name": "Database Connectivity with PHP","module_bg":"bg-green-400"},
+            {"module_id": 3, "module_name": "Building Dynamic Web Pages1","module_bg":"bg-blue-400"},
+            {"module_id": 4, "module_name": "Building Dynamic Web Pages2","module_bg":"bg-orange-400"},
+            {"module_id": 5, "module_name": "Building Dynamic Web Pages3","module_bg":"bg-blue-400"},
+            {"module_id": 6, "module_name": "Building Dynamic Web Pages4","module_bg":"bg-green-400"},
+            {"module_id": 7, "module_name": "Building Dynamic Web Pages5","module_bg":"bg-pink-400"}
+        ]
+        ,"price":"6600"
+    },
+    {
+        "course_id": 6,
+        "course_name": "PHP Web Development",
+        "course_image": "https://i.ibb.co/mTy7347/card3.jpg",
+        "modules": [
+            {"module_id": 1, "module_name": "Introduction to PHP","module_bg":"bg-pink-400"},
+            {"module_id": 2, "module_name": "Database Connectivity with PHP","module_bg":"bg-green-400"},
+            {"module_id": 3, "module_name": "Building Dynamic Web Pages1","module_bg":"bg-blue-400"},
+            {"module_id": 4, "module_name": "Building Dynamic Web Pages2","module_bg":"bg-orange-400"},
+            {"module_id": 5, "module_name": "Building Dynamic Web Pages3","module_bg":"bg-blue-400"},
+            {"module_id": 6, "module_name": "Building Dynamic Web Pages4","module_bg":"bg-green-400"},
+            {"module_id": 7, "module_name": "Building Dynamic Web Pages5","module_bg":"bg-pink-400"}
+        ]
+        ,"price":"6600"
+    },
+    {
+        "course_id": 7,
+        "course_name": "PHP Web Development",
+        "course_image": "https://i.ibb.co/KN7wpY7/card4.jpg",
+        "modules": [
+            {"module_id": 1, "module_name": "Introduction to PHP","module_bg":"bg-pink-400"},
+            {"module_id": 2, "module_name": "Database Connectivity with PHP","module_bg":"bg-green-400"},
+            {"module_id": 3, "module_name": "Building Dynamic Web Pages1","module_bg":"bg-blue-400"},
+            {"module_id": 4, "module_name": "Building Dynamic Web Pages2","module_bg":"bg-orange-400"},
+            {"module_id": 5, "module_name": "Building Dynamic Web Pages3","module_bg":"bg-blue-400"},
+            {"module_id": 6, "module_name": "Building Dynamic Web Pages4","module_bg":"bg-green-400"},
+            {"module_id": 7, "module_name": "Building Dynamic Web Pages5","module_bg":"bg-pink-400"}
+        ]
+        ,"price":"6600"
+    },
+    {
+        "course_id": 8,
+        "course_name": "PHP Web Development",
+        "course_image": "https://i.ibb.co/KN7wpY7/card1.jpg",
+        "modules": [
+            {"module_id": 1, "module_name": "Introduction to PHP","module_bg":"bg-pink-400"},
+            {"module_id": 2, "module_name": "Database Connectivity with PHP","module_bg":"bg-green-400"},
+            {"module_id": 3, "module_name": "Building Dynamic Web Pages1","module_bg":"bg-blue-400"},
+            {"module_id": 4, "module_name": "Building Dynamic Web Pages2","module_bg":"bg-orange-400"},
+            {"module_id": 5, "module_name": "Building Dynamic Web Pages3","module_bg":"bg-blue-400"},
+            {"module_id": 6, "module_name": "Building Dynamic Web Pages4","module_bg":"bg-green-400"},
+            {"module_id": 7, "module_name": "Building Dynamic Web Pages5","module_bg":"bg-pink-400"}
+        ]
+        ,"price":"6600"
+    }
+]
