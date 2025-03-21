@@ -58,7 +58,7 @@ const Dashbord = () => {
                 <li>
                     <NavLink to="/dashboard/coursestatus">
                         <FaCalendar></FaCalendar>
-                        Courser Status</NavLink>
+                        Course Status</NavLink>
                 </li>
                 <li>
                     <NavLink to="/dashboard/coursesetauls">

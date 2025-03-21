@@ -18,6 +18,7 @@ import Create from "../page/dashboard/addcourse/Create";
 import YourCourse from "../page/dashboard/yourcoursedetails/YourCourse";
 import Error from "../page/course/error";
 import MyCourses from "../shared/MyCourses";
+import AdminRoute from "./AdminRoute";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -81,7 +82,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'admin',
-          element: <Admin></Admin>
+          element: <AdminRoute><Admin></Admin></AdminRoute>
         },
         {
           path: 'addcourse',
@@ -95,10 +96,16 @@ const router = createBrowserRouter([
           path: 'coursesetauls',
           element: <YourCourse></YourCourse>
         },
-        
-
-        // // admin only routes
-        // {
+      ]
+    },
+    // {
+    //   path:"/admin",
+    //   element:
+    // }
+  ]);
+  export default router;
+  
+  // {
         //   path: 'adminHome',
         //   element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
         // },
@@ -119,9 +126,3 @@ const router = createBrowserRouter([
         //   path: 'users',
         //   element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
         // }
-
-      ]
-    }
-  ]);
-  export default router;
-  

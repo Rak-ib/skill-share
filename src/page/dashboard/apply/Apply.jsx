@@ -1,6 +1,7 @@
 import { useState } from "react";
-import USeAxioseSecure from "../../../hooks/USeAxioseSecure";
+// import USeAxioseSecure from "../../../hooks/USeAxioseSecure";
 import UseAuth from "../../../hooks/UseAuth";
+import axios from "axios";
 
 const CLOUDINARY_UPLOAD_PRESET = "kcig1ito";
 const CLOUDINARY_CLOUD_NAME = "dcao1wljw";
@@ -8,14 +9,15 @@ const CLOUDINARY_CLOUD_NAME = "dcao1wljw";
 const Apply = () => {
     const auth = UseAuth();
     const { user } = auth;
-    const axiosSecure = USeAxioseSecure();
+    // const axiosSecure = USeAxioseSecure();
 
     // State to store uploaded URLs
     const [governmentIDUrl, setGovernmentIDUrl] = useState("");
     const [courseThumbnailUrl, setCourseThumbnailUrl] = useState("");
     const [demoVideoUrl, setDemoVideoUrl] = useState("");
     const [syllabusPdfUrl, setSyllabusPdfUrl] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [count,setCount]= useState(0);
 
     // Handle File Upload (Image/Video/PDF)
     const handleFileUpload = async (event, setFileUrl, type) => {
@@ -46,6 +48,8 @@ const Apply = () => {
         } catch (error) {
             console.error(`Error uploading ${type}:`, error);
         } finally {
+            setCount(count+1);
+            if(count==4);
             setLoading(false);
         }
     };
@@ -63,23 +67,23 @@ const Apply = () => {
             email: user.email,
             fullName: form.fullName.value,
             mobileNumber: form.mobileNumber.value,
-            governmentID: governmentIDUrl,
+            governmentID: governmentIDUrl||" ",
             linkedInProfile: form.linkedInProfile.value,
-            course: form.course.value,
+            courseTitle: form.course.value,
             courseDescription: form.courseDescription.value,
             price: parseFloat(form.price.value),
             duration: form.duration.value,
-            syllabus: syllabusPdfUrl, // Now storing the PDF URL instead of text
-            demoVideo: demoVideoUrl || "",
-            courseThumbnail: courseThumbnailUrl,
+            syllabus: syllabusPdfUrl||" ", // Now storing the PDF URL instead of text
+            demoVideo: demoVideoUrl || " ",
+            courseThumbnail: courseThumbnailUrl||" ",
             bankAccountDetails: form.bankAccountDetails.value,
             agreementSigned: form.agreementSigned.checked,
-            status: "pending"
         };
 
         try {
-            const res = await axiosSecure.post('/apply', newApplication);
-            if (res.data.insertedId) {
+            const res = await axios.post('http://localhost:5000/applications/apply', newApplication,{withCredentials:true});
+            console.log("submitted",res.data.message);
+            if (res.data.message=='Application submitted') {
                 alert("Application Submitted Successfully!");
             }
         } catch (error) {
@@ -119,7 +123,7 @@ const Apply = () => {
                         </div>
                         <div className="form-control">
                             <label className="label"><span className="label-text text-white">Course Description</span></label>
-                            <textarea name="courseDescription" className="input input-bordered" minLength="50" required></textarea>
+                            <textarea name="courseDescription" className="input input-bordered" minLength="1" required></textarea>
                         </div>
                         <div className="form-control">
                             <label className="label"><span className="label-text text-white">Price</span></label>
@@ -161,11 +165,21 @@ const Apply = () => {
                                     Your browser does not support the video tag.
                                 </video>
                             )}
+                        </div><div className="form-control">
+                            <label className="label"><span className="label-text text-white">Bank Account Details</span></label>
+                            <input type="text" name="bankAccountDetails" className="input input-bordered" required />
                         </div>
                     </div>
 
+                    <div className="form-control mt-4">
+                        <label className="cursor-pointer flex items-center">
+                            <input type="checkbox" name="agreementSigned" className="checkbox checkbox-primary" required />
+                            <span className="ml-2 text-white">I agree to the terms and conditions</span>
+                        </label>
+                    </div>
+
                     <div className="form-control mt-6">
-                        <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+                        <button type="submit" className="btn btn-primary btn-block" >
                             {loading ? "Uploading..." : "Submit Application"}
                         </button>
                     </div>
