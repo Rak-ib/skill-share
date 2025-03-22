@@ -24,12 +24,17 @@ const Admin = () => {
 
     const handleStatusChange = async (appId, newStatus) => {
         try {
-            await axios.put(`/api/applications/${appId}`, { status: newStatus });
+            await axios.put(
+                `http://localhost:5000/applications/update/${appId}`,
+                { status: newStatus },
+                { withCredentials: true }
+            );
             fetchApplications();
             setSelectedApplication(prev => prev && prev._id === appId ? { ...prev, status: newStatus } : prev);
         } catch (error) {
             console.error("Error updating status:", error);
         }
+        
     };
     if(applications==[])
         return <span className="loading loading-ring loading-lg"></span>;

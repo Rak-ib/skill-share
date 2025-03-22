@@ -54,6 +54,23 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
         }
     };
+    const createUser=async(name,email,password)=>{
+        setLoading(true);
+        try {
+            const response= await axios.post(
+                "http://localhost:5000/users/register",
+                {email,password,name},
+                {withCredentials:true}
+            )
+            return response.data;
+        } catch (error) {
+            console.log("error signup failed",error);
+            throw error;
+        } finally {
+            setLoading(false);
+        }
+
+    }
     
 
     const logOut = async () => {
@@ -68,7 +85,7 @@ const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, loading, signIn, logOut }}>
+        <AuthContext.Provider value={{ user, loading, signIn, logOut, createUser }}>
             {children}
         </AuthContext.Provider>
     );
