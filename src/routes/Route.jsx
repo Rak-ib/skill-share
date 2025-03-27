@@ -14,11 +14,12 @@ import Apply from "../page/dashboard/apply/Apply";
 import Admin from "../page/dashboard/admin/Admin";
 import AddCourse from "../page/dashboard/addcourse/AddCourse";
 import CourseStatus from "../page/dashboard/coursestatus/CourseStatus";
-import Create from "../page/dashboard/addcourse/Create";
+// import Create from "../page/dashboard/addcourse/Create";
 import YourCourse from "../page/dashboard/yourcoursedetails/YourCourse";
 import Error from "../page/course/error";
 import MyCourses from "../shared/MyCourses";
 import AdminRoute from "./AdminRoute";
+import Trying from "../page/dashboard/addcourse/trying";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -55,9 +56,9 @@ const router = createBrowserRouter([
            element:<Demo></Demo>
         },
         {
-          path:'addnewcourse/:course_id',
-          element:<Create></Create>,
-          loader: ({params}) => fetch(`http://localhost:5000/applyadmin/${params.course_id}`)
+          
+          // <Create></Create>,
+          // loader: ({params}) => fetch(`http://localhost:5000/applyadmin/${params.course_id}`)
         }
       ]
     },
@@ -79,6 +80,14 @@ const router = createBrowserRouter([
         {
           path: 'apply',
           element: <Apply></Apply>
+        },
+        {
+          path:'addNewCourse/:id',
+          element:<Trying></Trying>,
+          loader: ({params}) => fetch(`http://localhost:5000/applications/apply/user/${params.id}`, {
+            method: "GET",
+            credentials: "include", // This sends cookies with the request
+          }),
         },
         {
           path: 'admin',

@@ -11,7 +11,9 @@ const Navbar = () => {
     const auth = UseAuth();
     const { user } = auth;
     const { notifications: realTimeNotifications } = useSocket(); // Get real-time notifications from socket context
-    const [notifications, setNotifications] = useState([]);
+    const [notifications, setNotifications] = useState([]); // Notifications from the database
+    const [showDropdown, setShowDropdown] = useState(false); // Toggle dropdown visibility
+    const [unreadCount, setUnreadCount] = useState(0); // Track unread notifications
 
     // Fetch notifications from the backend
     useEffect(() => {
@@ -21,6 +23,10 @@ const Navbar = () => {
                     withCredentials: true,
                 });
                 setNotifications(response.data);
+
+                // Calculate unread notifications
+                const unread = response.data.filter((notif) => !notif.isRead).length;
+                setUnreadCount(unread);
             } catch (error) {
                 console.error("Error fetching notifications:", error);
             }
@@ -33,6 +39,42 @@ const Navbar = () => {
 
     // Combine real-time notifications with fetched notifications
     const allNotifications = [...realTimeNotifications, ...notifications].slice(0, 10); // Show latest 10
+
+    // Toggle dropdown visibility
+    const toggleDropdown = () => {
+        setShowDropdown(!showDropdown);
+
+        // Mark all notifications as read when dropdown is opened
+        if (!showDropdown) {
+            markAllAsRead();
+        }
+    };
+
+    // Mark all notifications as read
+    const markAllAsRead = async () => {
+        try {
+            await axios.patch(
+                "http://localhost:5000/notifications/mark-all-as-read",
+                {},
+                { withCredentials: true }
+            );
+
+            // Update local state to reflect read status
+            setNotifications((prev) =>
+                prev.map((notif) => ({ ...notif, isRead: true }))
+            );
+            setUnreadCount(0); // Reset unread count
+        } catch (error) {
+            console.error("Error marking notifications as read:", error);
+        }
+    };
+
+    // Update unread count when real-time notifications arrive
+    useEffect(() => {
+        if (realTimeNotifications.length > 0) {
+            setUnreadCount((prev) => prev + realTimeNotifications.length);
+        }
+    }, [realTimeNotifications]);
 
     return (
         <div className="navbar h-22 mb-1 p-4 bg-slate-100 rounded-xl font-bold">
@@ -57,23 +99,27 @@ const Navbar = () => {
                 <div className="navbar-end flex items-center">
                     {/* Notifications Bell Icon */}
                     <div className="relative">
-                        <button className="btn btn-circle">
+                        <button className="btn btn-circle" onClick={toggleDropdown}>
                             🔔
-                            {allNotifications.length > 0 && (
+                            {unreadCount > 0 && (
                                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                                    {allNotifications.length}
+                                    {unreadCount}
                                 </span>
                             )}
                         </button>
 
                         {/* Notification Dropdown */}
-                        {allNotifications.length > 0 && (
+                        {showDropdown && (
                             <div className="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-lg p-2">
-                                {allNotifications.map((notif, index) => (
-                                    <div key={index} className="border-b p-2">
-                                        {notif.message} {notif.isRead ? "(Read)" : "(Unread)"}
-                                    </div>
-                                ))}
+                                {allNotifications.length > 0 ? (
+                                    allNotifications.map((notif, index) => (
+                                        <div key={index} className="border-b p-2">
+                                            {notif.message} {notif.isRead ? "(Read)" : "(Unread)"}
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p className="p-2">No new notifications</p>
+                                )}
                             </div>
                         )}
                     </div>

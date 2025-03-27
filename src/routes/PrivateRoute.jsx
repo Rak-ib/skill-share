@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { json, Navigate, useLocation } from "react-router-dom";
+import {  Navigate, useLocation } from "react-router-dom";
 
 
 

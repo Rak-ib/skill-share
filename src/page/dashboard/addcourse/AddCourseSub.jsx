@@ -1,32 +1,33 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
+const AddCourseSub = ({ application }) => {
+    const { courseTitle, status, _id } = application;
+    const navigate = useNavigate();
 
-const AddCourseSub = ({ booking }) => {
-    const { con_name, status, _id } = booking;
+    console.log("hey ", courseTitle);
+
+    const handleNavigation = () => {
+        navigate(`/dashboard/addNewCourse/${_id}`);
+    };
+
     return (
-
         <>
-            {status == 'confirm' &&
+            {status === "approved" && (
                 <tr>
                     <td>{_id}</td>
-                    <td>{con_name}</td>
-
-                    <td className=" text-green-500"> Approved
-
+                    <td>{courseTitle}</td>
+                    <td className="text-green-500">{status}</td>
+                    <td>
+                        <button
+                            className="btn btn-wide bg-black text-white"
+                            onClick={handleNavigation}
+                        >
+                            Add New Course
+                        </button>
                     </td>
-
-                    <td><button  className="btn btn-wide bg-black text-white ">
-
-                        <Link to={`/addnewcourse/${_id}`}>
-                        Add New Course</Link>
-
-
-
-                    </button></td>
                 </tr>
-            }
+            )}
         </>
-
     );
 };
 
